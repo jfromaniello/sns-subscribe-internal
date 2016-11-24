@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+TMP_DIR=$(mktemp -d)
+PROJECT_NAME=$(basename $PWD)
+
+echo "copying"
+
+rsync -rzh . $TMP_DIR > /dev/null
+
+pushd $TMP_DIR > /dev/null
+
+echo "pruning dev deps"
+npm prune --production &>/dev/null
+
+rm -rf node_modules/aws-sdk
+rm -rf test
+
+echo "zipping"
+zip -r sns-subscribe-internal.zip . &> /dev/null
+
+popd > /dev/null
+
+echo "cleaning"
+
+rm -f ./$PROJECT_NAME.zip
+
+mv $TMP_DIR/$PROJECT_NAME.zip ./
+
+rm -rf $TMP_DIR

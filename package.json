@@ -1,0 +1,22 @@
+{
+  "name": "sns-subscribe-internal",
+  "description": "Lambda function to update DNS records on autoscaling events.",
+  "version": "0.0.0",
+  "author": "José F. Romaniello <jfromaniello@gmail.com> (http://joseoncode.com)",
+  "repository": {
+    "url": "git://github.com/jfromaniello/auth0-update-dns.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "debug": "^2.3.3",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "chai": "~2.3.0",
+    "mocha": "~2.2.5",
+    "mock-aws": "^1.2.3"
+  }
+}
